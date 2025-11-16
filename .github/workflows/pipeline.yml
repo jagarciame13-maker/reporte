@@ -26,9 +26,10 @@ jobs:
           pytest --alluredir=allure-results
 
       - name: Generar reporte Allure
-        run: |
-          pip install allure-commandline
-          allure generate allure-results -o allure-report --clean
+        uses: simple-elf/allure-report-action@v1.6
+        with:
+          results: allure-results
+          report: allure-report
 
       - name: Guardar reporte como artefacto
         uses: actions/upload-artifact@v4
